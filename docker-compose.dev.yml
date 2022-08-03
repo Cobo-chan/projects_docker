@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./app/
+      dockerfile: Dockerfile
+  command: bundle exec puma -e devlopment
+  volumes:
+    - log-data:/music_circle/log
+    - tmp_data:/music_circle/tmp
+
+  web:
+    build: web
+    port: 3000:80
+    volumes:
+      - log-data:/var/log/error.log
+      - tmp-data:/music_circle/tmp
+    depends_on:
+      - app
+  
+  db:
+    image: mysql:5.7
+    volumes:
+      dev-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD: dev_db_root
+      - MYSQL_USER: root
+      - MYSQL_PASSWORD: local
+
+volumes:
+  - log-data:
+  - tmp-data:
+  - dev-data:
