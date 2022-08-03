@@ -1,0 +1,17 @@
+<header>
+  <div class="header-logo">
+    <%= link_to 'Music-Circle', root_path, class: "logo" %>
+  </div>
+
+  <div class="header-right">
+  <ul class="header-ul">
+    <% if user_signed_in? %>
+      <li class="left-button"><%= link_to (image_tag current_user.image, size: "40x40", class: "icon"), user_path(current_user.id), class: "header-button" %></li>
+      <li class="right-button"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-button" %></li>
+    <% else %>
+      <li class="left-button"><%= link_to '新規登録', new_user_registration_path, class: "header-button" %></li>
+      <li class="right-button"><%= link_to 'ログイン', new_user_session_path, class: "header-button" %></li>
+    <% end %>
+  </ul>
+  </div>
+</header>

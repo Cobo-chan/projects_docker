@@ -1,0 +1,67 @@
+
+.user-show-container {
+  width: 40%;
+  background-color: whitesmoke;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+/* ユーザー編集ページと共有 */
+.user-show-top {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.show-user-icon-box {
+  margin-top: 10px;
+}
+
+.show-user-image {
+  border-radius: 50%;
+  background-position: center;
+  border: 4px solid deepskyblue;
+}
+
+.show-user-box {
+  margin-top: 10px;
+}
+
+.show-user-box p {
+  display: inline-block;
+}
+
+.show-nickname {
+  height: 50px;
+  width: 400px;
+  line-height: 50px;
+  padding: 0 10px;
+  font-size: 25px;
+  border: 1px solid deepskyblue;
+  display: block;
+}
+
+.show-introduction {
+  height: 200px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid deepskyblue;
+  overflow: auto;
+}
+/* ここまでユーザー編集ページと共有 */
+
+.user-edit-box {
+  margin: 10px auto;
+  height: 50px;
+  width: 200px;
+  background-color: deepskyblue;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+}
+
+
+.edit-btn-box {
+  text-decoration: none;
+  color: white;
+}

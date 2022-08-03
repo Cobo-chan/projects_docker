@@ -1,0 +1,24 @@
+.user-edit-top {
+  width: 40%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+.edit-user-icon-title {
+  display: inline-block;
+}
+
+.user-update-box {
+  text-align: center;
+}
+
+.user-update-btn {
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-color: deepskyblue;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+<%= render 'shared/flash_messages' %>
+<%= render 'shared/header' %>
+
+<div class="wrapper">
+  <div class="index-top-ad">
+  </div>
+
+  <h2>投稿記事一覧</h2>
+  
+  <div class="main-container">
+    <%= render partial: 'shared/overview_articles', collection: @article, as: :article%>
+  </div>
+<%= render 'shared/footer' %>
+</div>
+
+<div>
+  <% if user_signed_in? %>
+    <%= link_to new_article_path, class: "edit-page-btn" do %>
+      <i class="fas fa-edit fa-3x" data-fa-transform="right-7 down-2" style="color: white"></i>
+      <p class="description">投稿する</p>
+    <% end %>
+  <% end %>
+</div>

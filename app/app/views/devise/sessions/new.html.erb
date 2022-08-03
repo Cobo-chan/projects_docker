@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<h2>ログイン</h2>
+
+<div class="login-container">
+  <%= form_with model: @user, url: new_user_session_path, class: 'login-form', local: true do |f| %>
+    <p class="session-alert"><%= flash[:alert] %></p>
+    <div class="session-field">
+      <p class="label-name"><%= f.label :email %></p>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-form email" %>
+    </div>
+
+    <div class="session-field">
+      <p class="label-name"><%= f.label :password, 'パスワード'%></p>
+      <%= f.password_field :password, autocomplete: "current-password", class: "input-form password" %>
+    </div>
+
+    <div class="login-actions">
+      <%= f.submit "ログイン", class: 'login-btn' %>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>

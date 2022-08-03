@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        image: 画像
+      article:
+        title: タイトル
+        image: 画像
+        text: 本文
+        genre_id: ジャンル
+        country_id: 国
+      comment:
+        comment: コメント

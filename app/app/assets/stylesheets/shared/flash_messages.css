@@ -1,0 +1,13 @@
+.flash-messages {
+  text-align: center;
+}
+
+.notice {
+  background-color: mediumaquamarine;
+  color: green;
+}
+
+.alert {
+  background-color: lightpink;
+  color: crimson;
+}

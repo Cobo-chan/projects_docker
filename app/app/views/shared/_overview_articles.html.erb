@@ -1,0 +1,40 @@
+
+<%= link_to article_path(article), class: "link-option" do %>
+  <div class="index-article-box">
+
+    <div class="left-box">
+      <div class="jaket-box">
+        <%= image_tag(article.image, size: "100x100", class: "index-jaket-image") %>
+      </div>
+    </div>
+
+    <div class="right-box">
+
+      <div class="right-top-box">
+        <div class="title-box">
+          <%= article.title %>
+        </div>
+      </div>
+
+      <div class="right-bottom-box">
+        <div class="right-bottom-box-left">
+          <div class="genre-box">
+            <%= article.genre.name %>
+          </div>
+
+          <div class="country-box">
+            <%= article.country.name %>
+          </div>
+        </div>
+
+        <div class="right-bottom-box-right">
+          <%= link_to user_path(article.user) do %>
+            <%= image_tag(article.user.image, size: "40x40", class: "article-user-image") %>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+<% end %>

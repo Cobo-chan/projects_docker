@@ -1,0 +1,33 @@
+<%= render 'shared/header' %>
+<h2>ユーザー情報編集</h2>
+<div>
+  <div class="user-edit-top">
+    <%= form_with model: @user, id: 'form', local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+      <div class="show-user-icon-box" id="preview-container">
+        <p class="edit-user-icon-title">ユーザーアイコン</p>
+        <%= f.file_field :image %>
+        <div id="setting-image">
+          <%= image_tag @user.image, id: 'preview-icon' %>
+        </div>
+      </div>
+      
+      <div class="show-user-box">
+        <p>ニックネーム</p><span class="caution-text"> ※1〜20文字以内で設定してください</span>
+        <%= f.text_field :nickname, placeholder: 'ニックネームを入力してください', class: "show-nickname" %>
+      </div>
+
+      <div class="show-user-box">
+        <p>プロフィール</p>
+        <%= f.text_area :introduction, placeholder: '自己紹介文を記入してみましょう', class: "show-introduction" %>
+      </div>
+
+      <div class="user-update-box">
+        <%= f.submit '更新する', class: "user-update-btn" %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/footer' %>

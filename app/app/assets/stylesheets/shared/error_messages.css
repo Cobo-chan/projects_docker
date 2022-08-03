@@ -1,0 +1,12 @@
+.error-alert {
+  display: flex;
+  justify-content: center;
+}
+
+.error-message {
+  color: crimson;
+}
+
+.field_with_errors {
+  display: contents;
+}

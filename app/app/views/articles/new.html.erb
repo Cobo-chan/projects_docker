@@ -1,0 +1,51 @@
+<%= render 'shared/flash_messages' %>
+<%= render "shared/header" %>
+
+<div class="wrapper">
+  <h2>
+    記事投稿フォーム
+  </h2>
+  <div class="form-container">
+    <%= form_with model: @article, class: "article-form", id: 'form',local: true do |f| %>
+
+    <%= render "shared/error_messages", model: f.object %>
+
+      <div class="top-form">
+
+        <div class="top-left-form" id="preview-container">
+          <%= f.label :image, "ジャケット画像" %><span class="caution-text"> ※必須<span>
+          <%= f.file_field :image, class: "image-form" %>
+          <div id="setting-image">
+            <%= image_tag 'article_default', id: 'preview-jacket' %>
+          </div>
+        </div>
+
+        <div class="top-right-form">
+          <div class="right-form-block">
+            <%= f.label :title, "記事タイトル"%><span class="caution-text"> ※必須<span>
+            <%= f.text_field :title, placeholder: 'タイトルを入力してください', class: "right-form" %>
+          </div>
+          <div class="right-form-block">
+            <%= f.label :genre_id, "ジャンル" %><span class="caution-text"> ※必須<span>
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class: "right-form"}) %>
+          </div>
+          <div class="right-form-block">
+            <%= f.label :country_id, "国" %><span class="caution-text"> ※必須<span>
+            <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class: "right-form"}) %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom-form">
+        <%= f.label :text, "本文"%><span class="caution-text"> ※必須<span>
+        <%= f.text_area :text, placeholder: '記事本文を入力してください', class: "text-form" %>
+      </div>
+
+      <div class="submit-form">
+        <%= f.submit '記事を投稿する', class: "submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+<%= render "shared/footer" %>
+</div>

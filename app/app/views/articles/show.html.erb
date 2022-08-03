@@ -1,0 +1,97 @@
+<%= render 'shared/flash_messages' %>
+<%= render 'shared/header' %>
+
+<h2>記事詳細ページ</h2>
+
+<div class="wrapper">
+  <div class="show-article-container">
+    <div class="top-articles">
+      <div class="top-article-left">
+        <%= image_tag(@article.image, size: "300x300", class: "jacket-image") %>
+      </div>
+      <div class="top-article-right">
+
+        <p class="label">タイトル</p>
+        <div class="boxes">
+          <div class="box-main"><%= @article.title %></div>
+        </div>
+
+        <p class="label">ジャンル</p>
+        <div class="boxes">
+          <div class="box-main"><%= @article.genre.name %></div>
+        </div>
+
+        <p class="label">国</p>
+        <div class="boxes">
+          <div class="box-main"><%= @article.country.name %></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-articles">
+      <div>本文</div>
+      <div class="bottom-text">
+        <%= safe_join(@article.text.split("\n"), tag(:br)) %>
+      </div>
+      <div class="edit-buttons">
+        <% if @article.user == current_user %>
+        <div class="article-show-edit-box">
+          <%= link_to edit_article_path(@article), class: "edit-btn-box" do %>
+            <p class="user-edit-btn">編集</p>
+          <% end %>
+        </div>
+        <div class="article-show-edit-box">
+          <%= link_to article_path(@article), method: :delete, data: { confirm: "本当に削除しますか？" } , class: "edit-btn-box" do %>
+            <p class="user-edit-btn">削除</p>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-container">
+    <% if user_signed_in? %>
+      <%= form_with model: [@article, @comment], class: "form-box", local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+        <div class="comment-input-box">
+          <%= f.text_area :comment, class: "comment-input" %>
+        </div>
+        <div class="comment-send-box">
+          <%= f.submit 'コメント送信', class: "submit-btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="comment-caution-text">※ログインユーザーのみコメント可能です</p>
+    <% end %>
+
+    <div class="comment-index-container">
+      <% @comments.each do |comment| %>
+        <div class="comment-user-box">
+          <div class="image-box">
+            <%= image_tag(comment.user.image, size: "35x35", class: "comment-user-image") %>
+          </div>
+          <div class="user-name-box">
+            <%= link_to comment.user.nickname, user_path(comment.user), class: "comment-user-name" %>
+            <% if comment.user == @article.user %>
+              <span class="article-author-view">投稿者コメント</span>
+            <% end %>
+          </div>
+          <div class="delete-btn-box">
+          <% if comment.user == current_user %>
+            <%= link_to '削除', article_comment_path(@article, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "comment-delete-btn" %>
+          <% elsif comment.article.user == current_user %>
+            <%= link_to '削除', article_comment_path(@article, comment), method: :delete, data: { confirm: "管理者としてコメントの削除を行います\nよろしいですか？"}, class: "comment-delete-btn" %>
+          <% end %>
+          </div>
+        </div>
+          <div class="comment-view-box">
+            <%= safe_join(comment.comment.split("\n"), tag(:br)) %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+<%= render 'shared/footer' %>
+</div>

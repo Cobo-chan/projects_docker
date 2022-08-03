@@ -1,0 +1,60 @@
+.index-article-box {
+  width: 100%; 
+  margin: 0 auto 10px;
+  border: 1px solid deepskyblue;
+  display: flex;
+}
+
+.link-option {
+  text-decoration: none;
+}
+
+.right-box {
+  width: 100%;
+  border-left: 1px solid deepskyblue;
+}
+
+.right-top-box {
+  border-bottom: 1px solid deepskyblue;
+  width: 100%;
+  height: 60px;
+}
+
+.title-box {
+  width: auto;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+.right-bottom-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-box, .title-box, .right-bottom-box {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.right-bottom-box-left {
+  display: flex;
+}
+
+.genre-box, .country-box {
+  height: 40px;
+  line-height: 40px;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.right-bottom-box-right {
+  text-decoration: none;
+}
+
+.article-user-image {
+  background-position: center;
+  border-radius: 50%;
+}

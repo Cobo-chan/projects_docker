@@ -1,0 +1,37 @@
+<%= render 'shared/flash_messages' %>
+<%= render 'shared/header' %>
+
+<h2>ユーザー詳細</h2>
+
+<div class="wrapper">
+  <div class="user-show-container">
+    <div class="user-show-top">
+      <div class="show-user-icon-box">
+        <p>ユーザーアイコン</p>
+        <%= image_tag(@user.image, size: "100x100", class: "show-user-image") %>
+      </div>
+      <div class="show-user-box">
+        <p>ニックネーム</p><br>
+        <p class="show-nickname"><%= @user.nickname %></p>
+      </div>
+      <div class="show-user-box">
+        <p>プロフィール</p>
+        <div class="show-introduction"><%= simple_format(h(@user.introduction)) %></div>
+      </div>
+      <% if current_user == @user %>
+        <div class="user-edit-box">
+          <%= link_to edit_user_path(@user), class: "edit-btn-box" do %>
+            <p class="user-edit-btn">編集</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <h3>ユーザー投稿記事一覧</h2>
+    <div class="user-show-bottom">
+      <%= render partial: 'shared/overview_articles', collection: @articles, as: :article %>
+    </div>
+
+  </div>
+
+<%= render 'shared/footer' %>
+</div>
